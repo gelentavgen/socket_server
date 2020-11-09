@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Перекладач</title>
+</head>
+<body>
+    <label for="term">Введите слово:</label>
+    <input type="text" id="term">
+    <button type="button" id="btn">Перевести</button>
+    <script>
+        window.addEventListener('load', function () {
+            const btn = document.getElementById('btn')
+            btn.addEventListener('click', function () {
+                const term = document.getElementById('term').value
+                fetch(`http://localhost:1033/terms?term=${term}`)
+                    .then((response) => response.text())
+                    .then(res => alert(res))
+                    .catch(console.error)
+            })
+        })
+    </script>
+</body>
+</html>
